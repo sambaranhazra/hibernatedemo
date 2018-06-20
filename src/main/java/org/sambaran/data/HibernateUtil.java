@@ -5,9 +5,6 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.sambaran.data.entities.AccountType;
-import org.sambaran.data.entities.User;
 
 public class HibernateUtil
 {

@@ -2,24 +2,31 @@ package org.sambaran.data;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.sambaran.data.entities.AccountType;
 
-public class Application {
-    public static void main(String[] args) {
+import java.util.Date;
 
+public class Application
+{
+    public static void main(String[] args)
+    {
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        /*AccountType accountType = new AccountType();
-        accountType.setName("Salary Savings");
-        Date createdDate = new Date();
-        accountType.setCreatedDate(createdDate);
-        accountType.setLastUpdatedDate(createdDate);
-        accountType.setCreatedBy("Babai");
-        accountType.setLastUpdatedBy("Babai");
-        session.save(accountType);*/
-        session.getTransaction().commit();
-        session.close();
-        sessionFactory.close();
+        try {
+            session.beginTransaction();
+            AccountType accountType = new AccountType();
+            accountType.setName("Salary Savings");
+            Date createdDate = new Date();
+            accountType.setCreatedDate(createdDate);
+            accountType.setLastUpdatedDate(createdDate);
+            accountType.setCreatedBy("Babai");
+            accountType.setLastUpdatedBy("Babai");
+            session.save(accountType);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+            sessionFactory.close();
+        }
     }
 }

@@ -24,6 +24,9 @@ public class Application
             accountType.setLastUpdatedBy("Babai");
             session.save(accountType);
             session.getTransaction().commit();
+            AccountType account = session.get(AccountType.class, accountType.getAccountTypeId());
+            System.out.println(account.getName());
+
         } finally {
             session.close();
             sessionFactory.close();
